@@ -1,4 +1,7 @@
-createGrid(1, 5);
+createGrid(16, 16);
+
+const squares = document.querySelectorAll('.square');
+squares.forEach(square => square.addEventListener('mouseover', (colorSquare)));
 
 // Create a grid with X amount of rows that have X amount of squares in them
 function createGrid(rowNum, squareNum) {
@@ -21,4 +24,8 @@ function createGrid(rowNum, squareNum) {
       row.appendChild(square);
     }
   })
+}
+
+function colorSquare() {
+  this.classList.add('color');
 }
