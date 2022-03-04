@@ -1,31 +1,23 @@
-createRows(16);
-createSquares(16);
+createGrid(1, 5);
 
-function createRows(number) {
+// Create a grid with X amount of rows that have X amount of squares in them
+function createGrid(rowNum, squareNum) {
   const container = document.querySelector('#container');
 
-  for (let i = 0; i < number; i++) {
+  // Create rows
+  for (let i = 0; i < rowNum; i++) {
     const row = document.createElement('div');
-    // should I add a class in this function or separately?
     row.classList.add('row');
-    // I don't like appending in the function
-    // it would be better to return a object list?
     container.appendChild(row);
   }
-}
 
-// I don't like that his function can only be run after createRows()
-// should I combine both functions and call it createGrid() ?
-// that kinda makes sense...
-function createSquares(number) {
   const rows = document.querySelectorAll('.row');
 
+  // Create squares for each row
   rows.forEach((row) => {
-    for (let i = 0; i< number; i++) {
+    for (let i = 0; i < squareNum; i++) {
       const square = document.createElement('div');
       square.classList.add('square');
-      // I don't like appending in the function
-      // it would be better to return a object list?
       row.appendChild(square);
     }
   })
