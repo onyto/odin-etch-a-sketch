@@ -1,12 +1,14 @@
 #container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .row {
   display: flex;
-  gap: 15px;
+}
+
+#container, .row {
+  gap: 10px;
 }
 
 .square {
