@@ -4,7 +4,7 @@ const squares = document.querySelectorAll('.square');
 squares.forEach(square => square.addEventListener('mouseover', (colorSquare)));
 
 const button = document.querySelector('button');
-button.onclick = () => clearGrid();
+button.addEventListener('click', clearGrid);
 
 // Create a grid with X amount of rows that have X amount of squares in them
 function createGrid(rowNum, squareNum) {
