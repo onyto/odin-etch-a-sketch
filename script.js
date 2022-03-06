@@ -1,18 +1,11 @@
 createGrid(16, 16);
-
-const squares = document.querySelectorAll('.square');
-squares.forEach(square => square.addEventListener('mouseover', (colorSquare)));
-
 const button = document.querySelector('button');
 button.addEventListener('click', resetGrid);
 
-
-
-// Create a grid with X amount of rows that have X amount of squares in them
 function createGrid(rowNum, squareNum) {
   const container = document.querySelector('#container');
+  
   const grid = document.createElement('div');
-
   grid.setAttribute('id', 'grid');
   container.appendChild(grid);
 
@@ -30,6 +23,7 @@ function createGrid(rowNum, squareNum) {
     for (let i = 0; i < squareNum; i++) {
       const square = document.createElement('div');
       square.classList.add('square');
+      square.addEventListener('mouseover', colorSquare);
       row.appendChild(square);
     }
   })
