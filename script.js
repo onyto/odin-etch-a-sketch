@@ -1,6 +1,5 @@
 createGrid(16, 16);
-const button = document.querySelector('button');
-button.addEventListener('click', resetGrid);
+addResetButtonEvent();
 
 function createGrid(rowNum, squareNum) {
   const container = document.querySelector('#container');
@@ -29,18 +28,29 @@ function createGrid(rowNum, squareNum) {
   })
 }
 
+function addResetButtonEvent() {
+  const button = document.querySelector('button');
+  button.addEventListener('click', resetGrid);
+}
+
 function colorSquare() {
   this.classList.add('color');
 }
 
-function resetGrid() {
+function deleteGrid() {
   const grid = document.getElementById('grid');
   grid.remove();
+}
 
+function resetGrid() {
   let userInput;
   while (true) {
     userInput = prompt('Please input the number squares per side of the new grid. 1-100', 16);
-    if (userInput > 0 && userInput <= 100) break;
+    if (userInput === '' || userInput === null) break;
+    if (userInput > 0 && userInput <= 100) {
+      deleteGrid();
+      createGrid(userInput, userInput);
+      break;
+    }
   }
-  createGrid(userInput, userInput);
 }
