@@ -11,12 +11,16 @@ button.addEventListener('click', resetGrid);
 // Create a grid with X amount of rows that have X amount of squares in them
 function createGrid(rowNum, squareNum) {
   const container = document.querySelector('#container');
+  const grid = document.createElement('div');
+
+  grid.setAttribute('id', 'grid');
+  container.appendChild(grid);
 
   // Create rows
   for (let i = 0; i < rowNum; i++) {
     const row = document.createElement('div');
     row.classList.add('row');
-    container.appendChild(row);
+    grid.appendChild(row);
   }
 
   const rows = document.querySelectorAll('.row');
@@ -36,8 +40,8 @@ function colorSquare() {
 }
 
 function resetGrid() {
-  const rows = document.querySelectorAll('.row');
-  rows.forEach(row => row.remove());
+  const grid = document.getElementById('grid');
+  grid.remove();
 
   let userInput;
   while (true) {

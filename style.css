@@ -1,16 +1,22 @@
 #container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
+#grid {
+  display: flex;
+  flex-direction: column;
+  width: 960px;
+  height: 800px;
+}
 .row {
   display: flex;
+  flex: 1;
 }
 
 .square {
-  height: 50px;
-  width: 50px;
+  display: flex;
+  flex: 1;
   border-style: solid;
 }
 
