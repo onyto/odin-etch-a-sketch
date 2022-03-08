@@ -1,5 +1,6 @@
 createGrid(16, 16);
-addResetButtonEvent();
+addNewGridButtonEvent();
+addClearGridButtonEvent();
 
 let isMouseDown = false;
 document.body.onmousedown = () => {return false}; // disables default mousedown (drag&drop) event
@@ -34,13 +35,24 @@ function createGrid(rowNum, squareNum) {
   })
 }
 
-function addResetButtonEvent() {
-  const button = document.querySelector('button');
+function addClearGridButtonEvent() {
+  const button = document.getElementById('clear-grid-btn');
+  button.addEventListener('click', clearCurrentGrid);
+}
+function addNewGridButtonEvent() {
+  const button = document.getElementById('new-grid-btn');
   button.addEventListener('click', resetGrid);
 }
 
 function colorSquare() {
   if (isMouseDown) this.classList.add('color');
+}
+
+function clearCurrentGrid() {
+  const squares = document.querySelectorAll('.square');
+  squares.forEach((square) => {
+    square.classList.remove('color');
+  })
 }
 
 function deleteGrid() {
