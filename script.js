@@ -1,6 +1,11 @@
 createGrid(16, 16);
 addResetButtonEvent();
 
+let isMouseDown = false;
+document.body.onmousedown = () => {return false}; // disables default mousedown (drag&drop) event
+document.addEventListener('mousedown', () => isMouseDown = true, true);
+document.addEventListener('mouseup', () => isMouseDown = false);
+
 function createGrid(rowNum, squareNum) {
   const container = document.querySelector('#container');
   
@@ -23,6 +28,7 @@ function createGrid(rowNum, squareNum) {
       const square = document.createElement('div');
       square.classList.add('square');
       square.addEventListener('mouseover', colorSquare);
+      square.addEventListener('mousedown', colorSquare);
       row.appendChild(square);
     }
   })
@@ -34,7 +40,7 @@ function addResetButtonEvent() {
 }
 
 function colorSquare() {
-  this.classList.add('color');
+  if (isMouseDown) this.classList.add('color');
 }
 
 function deleteGrid() {
